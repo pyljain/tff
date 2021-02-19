@@ -26,12 +26,12 @@ module "service_accounts" {
 }
 
 # Configure GKE cluster with Kubeflow Pipelines
-#module "gke_cluster" {
-#    source       = "./modules/gke_cluster"
-#    location     = var.cluster_location
-#    cluster_name = var.cluster_name
-#    sa_email     = module.service_accounts.cluster_sa_email
-#}
+module "gke_cluster" {
+    source       = "./modules/gke_cluster"
+    location     = var.cluster_location
+    cluster_name = var.cluster_name
+    sa_email     = module.service_accounts.cluster_sa_email
+}
 
 # Create GCS bucket for pipeline artifacts
 #resource "google_storage_bucket" "artifacts-store" {
