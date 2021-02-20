@@ -1,0 +1,61 @@
+apiVersion: v1
+data:
+  DATA_LOCATION: '[your-GCS-bucket]'
+kind: ConfigMap
+metadata:
+  name: executor-configs
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: remote-executor
+  name: remote-executor
+spec:
+  ports:
+  - port: 8000
+    protocol: TCP
+    targetPort: executor-port
+  selector:
+    app: remote-executor
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: remote-executor
+  name: remote-executor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: remote-executor
+  template:
+    metadata:
+      labels:
+        app: remote-executor
+    spec:
+      containers:
+      - args:
+        - --port
+        - $(EXECUTOR_PORT)
+        env:
+        - name: EXECUTOR_PORT
+          value: 8000
+        envFrom:
+        - configMapRef:
+            name: executor-configs
+        image: gcr.io/jk-mlops-dev/remote-executor:latest
+        name: remote-executor
+        ports:
+        - containerPort: 8000
+          name: executor-port
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: "1"
+            memory: 2Gi
