@@ -1,9 +1,9 @@
-output "cluster_name" {
-    value = module.gke_cluster.cluster_name
+output "server_cluster_name" {
+    value = module.server_cluster.cluster_name
 }
 
-output "cluster_endpoint" {
-    value = module.gke_cluster.cluster_endpoint
+output "server_cluster_endpoint" {
+    value = module.server_cluster.cluster_endpoint
 }
 
 output "lp_sa_email" {

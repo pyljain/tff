@@ -25,11 +25,20 @@ module "service_accounts" {
     cluster_sa_id  = var.cluster_sa_id
 }
 
-# Configure GKE cluster with Kubeflow Pipelines
-module "gke_cluster" {
+# Configure a GKE cluster to host TFF server
+module "server_cluster" {
     source       = "./modules/gke_cluster"
     location     = var.cluster_location
-    cluster_name = var.cluster_name
+    cluster_name = "${var.cluster_name_prefix}-server"
+    sa_email     = module.service_accounts.cluster_sa_email
+}
+
+# Configure a GKE clusters to host TFF clients
+module "client_cluster" {
+    count        = var.client_cluster_count
+    source       = "./modules/gke_cluster"
+    location     = var.cluster_location
+    cluster_name = "${var.cluster_name_prefix}-client-${count.index}"
     sa_email     = module.service_accounts.cluster_sa_email
 }
 

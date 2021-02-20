@@ -1,10 +1,7 @@
 
 
-data "google_project" "project" {}
-data "google_client_config" "default" {}
 
-
-# Create a GKE cluster with a default node pool and install KFP
+# Create a GKE cluster with a default node pool 
 resource "google_container_cluster" "gke_cluster" {
   name               = var.cluster_name
   location           = var.location
