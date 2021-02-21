@@ -8,6 +8,7 @@ module "acm-server" {
 
   operator_path    = "config-management-operator.yaml"
   sync_repo        = var.acm_repo_location
+  sync_branch      = var.acm_branch
   policy_dir       = var.acm_dir
 }
 
@@ -22,5 +23,6 @@ module "acm-clients" {
 
   operator_path    = "config-management-operator.yaml"
   sync_repo        = var.acm_repo_location
+  sync_branch      = var.acm_branch
   policy_dir       = var.acm_dir
 }
