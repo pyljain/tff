@@ -21,7 +21,7 @@ provider "registry.terraform.io/hashicorp/external" {
 
 provider "registry.terraform.io/hashicorp/google" {
   version     = "3.57.0"
-  constraints = "~> 3.5"
+  constraints = ">= 3.43.0, < 4.0.0"
   hashes = [
     "h1:RKEcuVaag/sQfTHJPJt8okNXPe0a7kqcGoAtdvIB+1I=",
     "zh:1c0ec65d86110643666fa88e39a06fd7f03ee959f2b528ab257e64b9333eca8e",
