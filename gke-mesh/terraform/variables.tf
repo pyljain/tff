@@ -41,12 +41,18 @@ variable "client_cluster_machine_type" {
     default     = "n1-standard-4"
 }
 
-variable "cluster_sa_id" {
-    description = "The ID of the Least Priviledge GKE service account"
-    default     = "gke-sa"
-}
-
 variable "client_cluster_count" {
     description = "The number of client clusters"
 }
+
+variable "acm_repo_location" {
+  description = "The location of the git repo ACM will sync to"
+}
+variable "acm_branch" {
+  description = "The git branch ACM will sync to"
+}
+variable "acm_dir" {
+  description = "The directory in git ACM will sync to"
+}
+
 
