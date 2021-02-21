@@ -4,17 +4,41 @@ variable "project_id" {
     type        = string
 }
 
-variable "cluster_location" {
-    description = "The location the GKE cluster"
+variable "region" {
+    description = "The region for  clusters"
+    type        = string
+}
+
+variable "zones" {
+    description = "The zones for clusters"
+    type        = list
 }
 
 variable "cluster_name_prefix" {
     description = "The prefix of the Kubernetes cluster name"
+    type        = string
 }
 
-variable "cluster_node_count" {
-    description = "The cluster's node count"
-    default     = 2
+variable "server_cluster_node_count" {
+    description = "The clusters' node count"
+    default     = 1
+}
+
+variable "client_cluster_node_count" {
+    description = "The clusters' node count"
+    default     = 1
+}
+
+variable "server_cluster_machine_type" {
+    description = "The machine type for a default node pool"
+    type        = string
+    default     = "n1-standard-4"
+}
+
+variable "client_cluster_machine_type" {
+    description = "The machine type for a default node pool"
+    type        = string
+    default     = "n1-standard-4"
 }
 
 variable "cluster_sa_id" {
