@@ -18,6 +18,8 @@ metadata:
   name: remote-executor
   labels:
     name: remote-executor
+  annotations:
+    configsync.gke.io/cluster-name-selector: server
 spec:
   replicas: 1
   selector:
