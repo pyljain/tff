@@ -55,4 +55,12 @@ variable "acm_dir" {
   description = "The directory in git ACM will sync to"
 }
 
+variable "acm_secret_type" {
+    description = "git authentication secret type"
+    default     = "none"
+}
 
+variable "acm_create_ssh_key" {
+    description = "Controls whether a key will be generated for Git authentication"
+    default     = false
+}

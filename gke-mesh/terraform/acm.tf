@@ -10,6 +10,8 @@ module "acm-server" {
   sync_repo        = var.acm_repo_location
   sync_branch      = var.acm_branch
   policy_dir       = var.acm_dir
+  secret_type      = var.acm_secret_type
+  create_ssh_key   = var.acm_create_ssh_key
 }
 
 module "acm-clients" {
@@ -25,4 +27,6 @@ module "acm-clients" {
   sync_repo        = var.acm_repo_location
   sync_branch      = var.acm_branch
   policy_dir       = var.acm_dir
+  secret_type      = var.acm_secret_type
+  create_ssh_key   = var.acm_create_ssh_key
 }

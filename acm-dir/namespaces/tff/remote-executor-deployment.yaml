@@ -29,12 +29,12 @@ spec:
         app: remote-executor
     spec:
       containers:
-        - image: executor/executor
+        - image: gcr.io/jk-mlops-dev/remote-executor
           name: remote-executor 
           #args: ["--port", "8000"]
-          envFrom:
-            - configMapRef:
-                name: executor-configs   
+          #envFrom:
+          #  - configMapRef:
+          #      name: executor-configs   
           ports: 
             - name: executor-port
               protocol: TCP
