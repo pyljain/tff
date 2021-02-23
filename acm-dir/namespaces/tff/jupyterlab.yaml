@@ -12,40 +12,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: remote-executor
+  name: jupyterlab
   labels:
-    name: remote-executor
+    name: jupyterlab
   annotations:
-    configsync.gke.io/cluster-name-selector: tff-server,tff-client-0,tff-client-1
+    configsync.gke.io/cluster-name-selector: tff-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: remote-executor
+      app: jupyterlab
   template:
     metadata:
       labels:
-        app: remote-executor
+        app: jupyterlab
     spec:
       containers:
-        - image: gcr.io/jk-mlops-dev/remote-executor
-          name: remote-executor 
-          args: ["--port", "8000"]
-          #envFrom:
-          #  - configMapRef:
-          #      name: executor-configs   
+        - image: gcr.io/deeplearning-platform-release/tf2-cpu.2-4
+          name: jupyterlab  
           ports: 
-            - name: executor-port
+            - name: jupyter-port
               protocol: TCP
-              containerPort: 8000
+              containerPort: 8080
           resources:
             limits:
-              cpu: "1"
-              memory: 2Gi
+              cpu: "4"
+              memory: 8Gi
             requests:
-              cpu: "1"
-              memory: 2Gi
+              cpu: "4"
+              memory: 8Gi
   
