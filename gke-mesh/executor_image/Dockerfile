@@ -31,4 +31,4 @@ COPY "remote_executor_service.py" /
 
 EXPOSE 8000
 
-CMD ["python3", "/remote_executor_service.py", "v", "0"]
+ENTRYPOINT ["python3", "/remote_executor_service.py"]
