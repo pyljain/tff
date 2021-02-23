@@ -6,4 +6,4 @@ client_cluster_count=2
 server_cluster_node_count=3
 acm_repo_location="https://github.com/jarokaz/tff/"
 acm_branch="main"
-acm_dir="acm-dir"
+acm_dir="acm-configs"
