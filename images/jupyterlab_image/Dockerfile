@@ -21,7 +21,13 @@ ARG VERSION
 
 RUN test -n "${VERSION}"
 
-RUN pip install --no-cache-dir --upgrade pip 
-RUN pip install --no-cache-dir --upgrade "tensorflow-federated==${VERSION}" nest_asyncio
-RUN pip freeze
+RUN apt-get update && apt-get install -y apt-transport-https gnupg2 curl \
+&& curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add - \
+&& echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | tee -a /etc/apt/sources.list.d/kubernetes.list \
+&& apt-get update \
+&& apt-get install -y kubectl
+
+RUN pip install --no-cache-dir --upgrade pip \
+&& pip install --no-cache-dir --upgrade "tensorflow-federated==${VERSION}" nest_asyncio \
+&& pip freeze
 
