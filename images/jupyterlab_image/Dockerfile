@@ -15,20 +15,13 @@
 # This Dockerfile is used to create a Docker image of the TensorFlow Federated
 # (TFF) remote executor service from a released version of TFF. Pass
 # --build-arg VERSION=X.Y.Z to docker build to specify the release number.
-FROM python:3.6-buster
-
-RUN python3 --version
+FROM gcr.io/deeplearning-platform-release/tf2-cpu.2-4
 
 ARG VERSION
 
 RUN test -n "${VERSION}"
 
-RUN pip3 install --no-cache-dir --upgrade pip 
-RUN pip3 install --no-cache-dir --upgrade "tensorflow-federated==${VERSION}" nest_asyncio
-RUN pip3 freeze
+RUN pip install --no-cache-dir --upgrade pip 
+RUN pip install --no-cache-dir --upgrade "tensorflow-federated==${VERSION}" nest_asyncio
+RUN pip freeze
 
-COPY "remote_executor_service.py" /
-
-EXPOSE 8000
-
-ENTRYPOINT ["python3", "/remote_executor_service.py"]

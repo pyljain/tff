@@ -32,7 +32,7 @@ spec:
         app: jupyterlab
     spec:
       containers:
-        - image: gcr.io/deeplearning-platform-release/tf2-cpu.2-4
+        - image: gcr.io/jk-mlops-dev/tff-experimentation
           name: jupyterlab  
           ports: 
             - name: jupyter-port
