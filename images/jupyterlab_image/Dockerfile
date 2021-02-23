@@ -15,7 +15,7 @@
 # This Dockerfile is used to create a Docker image of the TensorFlow Federated
 # (TFF) remote executor service from a released version of TFF. Pass
 # --build-arg VERSION=X.Y.Z to docker build to specify the release number.
-FROM gcr.io/deeplearning-platform-release/tf2-cpu.2-4
+FROM gcr.io/deeplearning-platform-release/base-cpu
 
 ARG VERSION
 
