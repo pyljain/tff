@@ -32,4 +32,6 @@ As noted, the JupyterLab server is not exposed through an external IP address. T
 1. Modify the `acm-configs/namespaces/tff/jupyterlab-service.yaml` manifest to use LoadBalancer rather than ClusterIP
 2. Use `kubectl` to forward the local port to the `jupyterlab` service (port 8080) on your server cluster.
 
-
+```
+kubectl port-forward service/jupyterlab 8080:jupyter-port
+```
