@@ -33,5 +33,6 @@ As noted, the JupyterLab server is not exposed through an external IP address. T
 2. Use `kubectl` to forward the local port to the `jupyterlab` service (port 8080) on your server cluster.
 
 ```
-kubectl port-forward service/jupyterlab 8080:jupyter-port
+gcloud container clusters get-credentials <your server cluster> --zone <your zone>
+kubectl port-forward -n tff service/jupyterlab 8080:8080
 ```
