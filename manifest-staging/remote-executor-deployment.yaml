@@ -18,6 +18,8 @@ metadata:
   name: remote-executor
   labels:
     name: remote-executor
+  annotations:
+    configsync.gke.io/cluster-name-selector: tff-server,tff-client-0,tff-client-1
 spec:
   replicas: 1
   selector:
@@ -31,7 +33,7 @@ spec:
       containers:
         - image: gcr.io/jk-mlops-dev/remote-executor
           name: remote-executor 
-          #args: ["--port", "8000"]
+          args: ["--port", "8000"]
           #envFrom:
           #  - configMapRef:
           #      name: executor-configs   
