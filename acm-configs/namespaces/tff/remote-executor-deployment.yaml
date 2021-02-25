@@ -31,7 +31,7 @@ spec:
         app: remote-executor
     spec:
       containers:
-        - image: gcr.io/jk-mlops-dev/remote-executor
+        - image: gcr.io/db-poc-305922/remote-executor
           name: remote-executor 
           args: ["--port", "8000"]
           #envFrom:
