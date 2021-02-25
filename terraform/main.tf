@@ -1,3 +1,14 @@
+terraform {
+  required_version = ">=0.14"
+  required_providers {
+    google = "~> 3.5"
+  }
+  
+  backend "gcs" {
+    bucket = "jk-terraform-state"
+    prefix = "federated-learning"
+  }
+}
 
 provider "google" {
   project = var.project_id
