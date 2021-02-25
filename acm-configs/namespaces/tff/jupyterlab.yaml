@@ -32,7 +32,7 @@ spec:
         app: jupyterlab
     spec:
       containers:
-        - image: gcr.io/jk-mlops-dev/jupyterlab:latest
+        - image: gcr.io/db-poc-305922/jupyterlab:latest
           name: jupyterlab  
           ports: 
             - name: jupyter-port
