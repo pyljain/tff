@@ -2,7 +2,7 @@
 module "server-cluster" {
   name                     = "${var.cluster_name_prefix}-server"
   project_id               = module.project-services.project_id
-  source                   = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/beta-public-cluster"
+  source                   = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/beta-public-cluster?ref=v13.1.0"
   regional                 = false
   region                   = var.region
   network                  = "default"
@@ -32,7 +32,7 @@ module "client-clusters" {
   count                    = var.client_cluster_count
   name                     = "${var.cluster_name_prefix}-client-${count.index}"
   project_id               = module.project-services.project_id
-  source                   = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/beta-public-cluster"
+  source                   = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/beta-public-cluster?ref=v13.1.0"
   regional                 = false
   region                   = var.region
   network                  = "default"

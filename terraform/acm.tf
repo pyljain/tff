@@ -1,5 +1,5 @@
 module "acm-server" {
-  source           = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/acm"
+  source           = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/acm?ref=v13.1.0"
 
   project_id       = data.google_client_config.current.project
   cluster_name     = module.server-cluster.name
@@ -16,7 +16,7 @@ module "acm-server" {
 
 module "acm-clients" {
   count            = var.client_cluster_count
-  source           = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/acm"
+  source           = "github.com/terraform-google-modules/terraform-google-kubernetes-engine//modules/acm?ref=v13.1.0"
 
   project_id       = data.google_client_config.current.project
   cluster_name     = module.client-clusters[count.index].name
