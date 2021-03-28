@@ -4,6 +4,8 @@ metadata:
   name: block-node-port
 spec:
   match:
+    enforcementAction: deny
     kinds:
       - apiGroups: [""]
         kinds: ["Service"]
+    excludedNamespaces: ["kube-system"]
